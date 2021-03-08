@@ -81,3 +81,13 @@ input[type=number]{
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
+
+.inputContainer{
+    display: flex;
+    align-items: center
+}
+
+.deleteInput{
+    transform: translateX(-1.6rem);
+    cursor: pointer;
+}
