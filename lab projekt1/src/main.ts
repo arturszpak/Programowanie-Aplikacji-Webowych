@@ -5,9 +5,11 @@ class DataManager {
     max: HTMLInputElement;
 
     inputArray: HTMLInputElement[];
+    deleteImageArray: HTMLImageElement[];
 
     constructor(){
         this.inputArray = [];
+        this.deleteImageArray = [];
         this.runApp();
     }
 
@@ -26,14 +28,13 @@ class DataManager {
                 resultsDiv.style.display = "flex";
         
                 this.generateInputs(+inputCount.value);
+                this.watchDeleteInput();
                 this.runManager();
                  
             }else{
-                const p: HTMLParagraphElement = document.createElement('p');
-                p.textContent = "Input value must be between 1 and 50!";
-                p.style.color = "red";
-                p.style.fontSize = "1.2rem";
-                document.querySelector(".generateData").appendChild(p);
+                const output: string = `<p style="color:red">Input value must be between 1 and 50!</p>`;
+                document.querySelector("#err").innerHTML = output;
+                this.runApp();
             }
         });
     }
@@ -41,12 +42,25 @@ class DataManager {
     generateInputs(amount: number): void{
         const dataDiv: HTMLDivElement = document.querySelector(".dataInputs");
         for(let i=0; i<amount; i++){
-            const input: HTMLInputElement = document.createElement('input');
-            input.type = "number";
-            input.classList.add("dataInput");
-            input.placeholder = "Enter numeric value...";
-            dataDiv.appendChild(input);
+            const output: string  = 
+            `<div class="inputContainer">
+                <input type="number" class="dataInput" id="data${i+1}" placeholder="Enter numeric value" >
+                <img src="../src/assets/icon/close.png" alt="close" class="deleteInput" />
+            </div>`;
+            dataDiv.innerHTML += output;
         }
+    }
+
+    watchDeleteInput(): void{
+        const deleteBtns = document.querySelectorAll(".deleteInput");
+        deleteBtns.forEach(btn => btn.addEventListener("click", (event) => this.deleteInput(event)));
+    }
+
+    deleteInput(event): void{
+        const element: HTMLDivElement = event.target.parentNode;
+        element.remove();
+        this.runManager();
+        this.computeResults();
     }
 
     runManager(): void{
@@ -55,7 +69,8 @@ class DataManager {
     }
 
     getInputs(): void{
-        const dataInputs = document.querySelectorAll(".dataInput");
+        this.inputArray = [];
+        const dataInputs= document.querySelectorAll(".dataInput");
         dataInputs.forEach(input => this.inputArray.push(input as HTMLInputElement));
 
         this.sum = document.querySelector("#sumInput");
