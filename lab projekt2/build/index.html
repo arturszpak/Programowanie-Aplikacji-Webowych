@@ -24,10 +24,69 @@
                 <div class="tile" data-value="f">f</div>
             </div>
         </div>
+        <div class="recordings-panel">
+            <h2>Recordings</h2>
+            <div class="audio-recordings">
+                <h2>My audios</h2>
+                <div class="recordings">
+                    <div class="recording">
+                        <h3>My audio 1</h3>
+                        <button type="button" class="recordBtn" data-name="startRecordingBtn" data-channel="1">
+                            <i class="fas fa-microphone"></i>
+                        </button>
+                        <button type="button" class="playBtn" data-name="playRecordingBtn">
+                            <i class="fas fa-play"></i>
+                        </button>
+                    </div>
+                    <div class="recording">
+                        <h3>My audio 2</h3>
+                        <button type="button" class="recordBtn" data-name="startRecordingBtn"  data-channel="1" >
+                            <i class="fas fa-microphone"></i>
+                        </button>
+                        <button type="button" class="playBtn" data-name="playRecordingBtn">
+                            <i class="fas fa-play"></i>
+                        </button>
+                    </div>
+                    <div class="recording">
+                        <h3>My audio 3</h3>
+                        <button type="button" class="recordBtn" data-name="startRecordingBtn"  data-channel="1">
+                            <i class="fas fa-microphone"></i>
+                        </button>
+                        <button type="button" class="playBtn" data-name="playRecordingBtn" data-channel="1">
+                            <i class="fas fa-play"></i>
+                        </button>
+                    </div>
+                    <div class="recording">
+                        <h3>My audio 4</h3>
+                        <button type="button" class="recordBtn" data-name="startRecordingBtn">
+                            <i class="fas fa-microphone"></i>
+                        </button>
+                        <button type="button" class="playBtn" data-name="playRecordingBtn">
+                            <i class="fas fa-play"></i>
+                        </button>
+                    </div>
+                </div>
 
+            </div>
+            <div class="options">
+                <h2>Options</h2>
+                <div class="option">
+                    <label for="rectime">Recording time (1s-10s):</label>
+                    <input type="range" id="rectime" name="rectime" min="1" max="10">
+                </div>
+                <div class="option reverse">
+                    <p>Reverse recording </p>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
         <div class="audios" id="audioContainer">
         </div>
     </div>
     <script src="./../src/main.js"></script>
+    <script src="https://kit.fontawesome.com/f496e72b89.js" crossorigin="anonymous"></script>
 </body>
 </html>
