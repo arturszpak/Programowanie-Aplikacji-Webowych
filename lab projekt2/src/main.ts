@@ -3,11 +3,9 @@ let audioKeys: string[];
 let isRecording: boolean = false;
 
 let recordingTimeStamp: number = 0;
-let channel1Play: any[] = [];
-let channel2Play: any[] = [];
-let channel3Play: any[] = [];
-let channel4Play: any[] = [];
 
+let channelsData: any[][] = [[{}],[{}],[{}],[{}]];
+let recordingChannel: number;
 
 
 class Drumkit{
@@ -41,7 +39,7 @@ class Drumkit{
         recordBtns.forEach(btn => btn.addEventListener("click", (e) => this.startRecording(e)));
 
         const playBtns: HTMLButtonElement[] = Array.prototype.slice.call(document.querySelectorAll(".playBtn"));
-        playBtns.forEach(btn => btn.addEventListener("click", () => this.playRecording()));
+        playBtns.forEach(btn => btn.addEventListener("click", (e) => this.playRecording(e)));
 
     }
 
@@ -72,7 +70,7 @@ class Drumkit{
         this.playAnimation(key)
 
         if(isRecording){
-            channel1Play.push({ time, element});
+            channelsData[recordingChannel].push({time, element, recordingTimeStamp});
         }
     }
 
@@ -89,17 +87,26 @@ class Drumkit{
         const duration: number = (parseInt(durationElement.value)*1000);
 
         if(duration<1000 || duration>10000 || duration==null || duration == undefined) return;
-        channel1Play = [];
+        const targetElement: HTMLButtonElement = (event.target) as HTMLButtonElement;
+        const channelID: number = parseInt(targetElement.dataset.channel);
+        channelsData[channelID-1] = [];
+        // channel1Play = [];
         isRecording = true;
+        recordingChannel = channelID-1;
         
         setTimeout(() => {
             isRecording = false;
         }, duration)
     }
 
-    playRecording(): void{
-        channel1Play.forEach(sound => {
-            const delayToPlaySound: number = sound.time - recordingTimeStamp;
+    playRecording(event: Event): void{
+        const target: HTMLButtonElement = event.target as HTMLButtonElement;
+        const playChannelID: number = parseInt(target.dataset.channel)-1;
+        if(channelsData[playChannelID] == undefined) return;
+        
+        console.log(channelsData)
+        channelsData[playChannelID].forEach(sound => {
+            const delayToPlaySound: number = sound.time - sound.recordingTimeStamp;
             setTimeout(() => {
                 sound.element.currentTime = 0;
                 sound.element.play();
