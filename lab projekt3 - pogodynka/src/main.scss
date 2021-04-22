@@ -1,0 +1,84 @@
+$mainColorYellow: #f4b41a;
+$mainColorBlue: #143d59;
+
+@mixin flex($justify, $direction) {
+  display: flex;
+  align-items: center;
+  justify-content: $justify;
+  flex-direction: $direction;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 10px;
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+  background: $mainColorYellow;
+  color: $mainColorBlue;
+  min-height: 100vh;
+}
+
+.weatherApp {
+  @include flex(center, column);
+  font-size: 1rem;
+  width: 80%;
+  margin: 0 auto;
+
+  &__inputWrapper {
+    padding: 2rem;
+  }
+
+  &__dataWrapper {
+    @include flex(space-around, row);
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 6rem;
+    min-height: 40vh;
+  }
+
+  &__input {
+    border: 1px solid transparent;
+    border-radius: 5px;
+    outline: none;
+    padding: 0.5rem;
+    transition: all 0.3s ease-in-out;
+  }
+
+  &__input:focus {
+    background-color: rgb(233, 247, 252);
+    border: 1px solid rgb(189, 203, 207);
+  }
+
+  &__cityData {
+    @include flex(center, column);
+    min-height: 3rem;
+    background: $mainColorBlue;
+    color: $mainColorYellow;
+    padding: 2rem 3rem;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  &__addBtn {
+    padding: 0.5rem 1rem;
+    border: none;
+    background: $mainColorBlue;
+    color: $mainColorYellow;
+    border-radius: 1rem;
+    margin: 0 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+    outline: none;
+  }
+
+  &__addBtn:hover,
+  &__addBtn:focus {
+    transform: translateX(3px);
+  }
+}
