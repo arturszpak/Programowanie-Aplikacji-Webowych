@@ -1,0 +1,94 @@
+$mainColorBackground: #24232c;
+$mainColorText: #e4e4e4;
+$inputFontColor: rgb(190, 190, 190);
+$buttonBgColor: #c78932;
+
+@mixin flex($justify, $direction) {
+  display: flex;
+  align-items: center;
+  justify-content: $justify;
+  flex-direction: $direction;
+}
+
+body {
+  background: $mainColorBackground;
+  color: $mainColorText;
+  // height: 100vh;
+}
+
+.notekeep {
+  &__addNoteWrapper {
+    @include flex(center, row);
+    width: 80%;
+    margin: 2rem auto;
+  }
+
+  &__inputWrapper {
+    @include flex(center, column);
+  }
+
+  &__input {
+    margin-right: 2rem;
+    margin: 0.5rem 2rem 0.5rem 0;
+    min-width: 25rem;
+    padding: 0.5rem;
+    border-radius: 0.4em;
+    border: 1px solid $inputFontColor;
+    outline: none;
+    font-size: 1rem;
+    background-color: transparent;
+    color: $inputFontColor;
+  }
+
+  &__input::placeholder {
+    color: $inputFontColor;
+  }
+
+  &__addNoteBtn {
+    border: none;
+    border-radius: 1rem;
+    background: $buttonBgColor;
+    color: white;
+    outline: none;
+    padding: 0.5rem 2rem;
+    min-width: 110px;
+    max-width: 150px;
+    cursor: pointer;
+    transition: all 0.2s ease-in;
+    opacity: 0.8;
+  }
+
+  &__addNoteBtn:hover {
+    transform: translateX(5px);
+    opacity: 1;
+  }
+
+  &__notesWrapper {
+    @include flex(space-around, row);
+    flex-wrap: wrap;
+    padding: 2rem;
+  }
+
+  &__colors {
+    margin: 0 1.5rem;
+  }
+
+  &__color {
+    width: 40px;
+    height: 20px;
+    border-radius: 5px;
+    display: inline-block;
+    &--lightblue {
+      background-color: #5bc0de;
+    }
+    &--orange {
+      background-color: #f0ad4e;
+    }
+    &--green {
+      background-color: #5cb85c;
+    }
+    &--red {
+      background-color: #d9534f;
+    }
+  }
+}

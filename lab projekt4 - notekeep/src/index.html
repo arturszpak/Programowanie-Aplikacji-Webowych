@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pogodynka</title>
+  </head>
+  <body>
+    <main class="notekeep">
+      <div class="notekeep__addNoteWrapper">
+        <div class="notekeep__inputWrapper">
+          <input type="text" id="note-inputTitle" class="notekeep__input" placeholder="Title...">
+          <input type="text" id="note-input" class="notekeep__input" placeholder="Take a note...">
+        </div>
+          <div class="notekeep__colors">
+
+            <div class="notekeep__colorWrapper">
+              <input type="radio" value="5bc0de" checked name="color" id="color">
+              <label for="color">
+                <span class="notekeep__color notekeep__color--lightblue"></span>
+              </label>
+            </div>
+
+            <div class="notekeep__colorWrapper">
+              <input type="radio" value="f0ad4e" name="color" id="color2">
+              <label for="color2">
+                <span class="notekeep__color notekeep__color--orange"></span>
+              </label>
+            </div>
+
+            <div class="notekeep__colorWrapper">
+              <input type="radio" value="5cb85c" name="color" id="color3">
+              <label for="color3">
+                <span class="notekeep__color notekeep__color--green"></span>
+              </label>
+            </div>
+
+            <div class="notekeep__colorWrapper">
+              <input type="radio" value="d9534f" name="color" id="color4">
+              <label for="color4">
+                <span class="notekeep__color notekeep__color--red"></span>
+              </label>
+            </div>
+
+          </div>
+          <button type="button" id="addNoteBtn" class="notekeep__addNoteBtn">Add</button>
+      </div>
+      
+      <div class="notekeep__notesWrapper">
+
+      </div>
+    </main>
+    <script src="index.js"></script>
+  </body>
+</html>
