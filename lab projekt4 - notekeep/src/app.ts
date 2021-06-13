@@ -35,7 +35,7 @@ export default class App {
             const colorValue = document.querySelector('input[name="color"]:checked') as HTMLInputElement;
             this.colorRadio = colorValue;
             
-            if(!isInputValidated && !isTitleValidated){
+            if(!isInputValidated || !isTitleValidated){
                 this.inputContainer.value = "";
                 this.inputTitle.value = "";
                 return;

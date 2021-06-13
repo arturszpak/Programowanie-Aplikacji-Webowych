@@ -17,10 +17,10 @@ body {
 }
 
 .notekeep {
+  width: 80%;
+  margin: 2rem auto;
   &__addNoteWrapper {
     @include flex(center, row);
-    width: 80%;
-    margin: 2rem auto;
   }
 
   &__inputWrapper {
@@ -63,7 +63,8 @@ body {
     opacity: 1;
   }
 
-  &__notesWrapper {
+  &__notesWrapper,
+  &__notesPinned {
     @include flex(space-around, row);
     flex-wrap: wrap;
     padding: 2rem;

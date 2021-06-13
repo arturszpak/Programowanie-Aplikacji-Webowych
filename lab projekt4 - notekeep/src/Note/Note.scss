@@ -28,21 +28,27 @@
     font-size: 0.7rem;
   }
 
-  &__remove {
+  &__controls {
     position: absolute;
     top: 0;
     right: 0;
-    padding: 0.2rem 0.3rem;
     margin: 0.4rem 0.4rem 0 0;
-    background: rgb(235, 82, 56);
-    border-radius: 50%;
-    cursor: pointer;
-    color: white;
     font-size: 0.8rem;
-    transition: all 0.2s ease-in;
-  }
 
-  &__remove:hover {
-    transform: translateX(2px);
+    &__remove {
+      padding: 0.2rem 0.3rem;
+      border: none;
+      background: rgb(235, 82, 56);
+      border-radius: 50%;
+      cursor: pointer;
+      color: white;
+      transition: all 0.2s ease-in;
+    }
+    &__edit,
+    &__pin {
+      cursor: pointer;
+      border: none;
+      background-color: transparent;
+    }
   }
 }
